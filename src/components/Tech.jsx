@@ -7,7 +7,10 @@ export default function LogosBoxedwithHeading() {
           {/* Heading */}
           <div className="text-center">
             <h2 className="mb-4 text-4xl font-black text-black dark:text-white">
-              Trusted by these <span>world-class companies</span>
+              Trusted by these{" "}
+              <span>
+                world-class companies
+              </span>
             </h2>
             <div className="mx-auto mb-3 h-1 w-10 rounded-lg bg-slate-300 dark:bg-slate-700/75" />
             <p className="mx-auto text-lg leading-relaxed font-medium text-slate-700 lg:w-2/3 dark:text-slate-300">
@@ -27,18 +30,17 @@ export default function LogosBoxedwithHeading() {
               <div className="absolute inset-0 scale-100 rounded-xl bg-white opacity-0 transition duration-100 group-hover:scale-105 group-hover:opacity-100 group-active:scale-100 group-active:opacity-0 dark:bg-slate-800" />
               <div className="relative text-center">
                 <div className="inline-flex items-center gap-2 py-2 text-lg font-semibold text-slate-900 opacity-75 grayscale transition group-hover:opacity-100 group-hover:grayscale-0 dark:text-slate-100">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                  <svg
+                    className="hi-solid hi-cursor-arrow-rays inline-block size-6 text-rose-600 dark:text-rose-500"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
                     <path
-                      d="M0 8.934l49.854.158 14.167 24.47 14.432-24.47L128 8.935l-63.834 110.14zm126.98.637l-24.36.02-38.476 66.053L25.691 9.592.942 9.572l63.211 107.89zm-25.149-.008l-22.745.168-15.053 24.647L49.216 9.73l-22.794-.168 37.731 64.476zm-75.834-.17l23.002.009m-23.002-.01l23.002.01"
-                      fill="none"
-                    />
-                    <path
-                      d="M25.997 9.393l23.002.009L64.035 34.36 79.018 9.404 102 9.398 64.15 75.053z"
-                      fill="#35495e"
-                    />
-                    <path
-                      d="M.91 9.569l25.067-.172 38.15 65.659L101.98 9.401l25.11.026-62.966 108.06z"
-                      fill="#41b883"
+                      fillRule="evenodd"
+                      d="M12 1.5a.75.75 0 01.75.75V4.5a.75.75 0 01-1.5 0V2.25A.75.75 0 0112 1.5zM5.636 4.136a.75.75 0 011.06 0l1.592 1.591a.75.75 0 01-1.061 1.06l-1.591-1.59a.75.75 0 010-1.061zm12.728 0a.75.75 0 010 1.06l-1.591 1.592a.75.75 0 01-1.06-1.061l1.59-1.591a.75.75 0 011.061 0zm-6.816 4.496a.75.75 0 01.82.311l5.228 7.917a.75.75 0 01-.777 1.148l-2.097-.43 1.045 3.9a.75.75 0 01-1.45.388l-1.044-3.899-1.601 1.42a.75.75 0 01-1.247-.606l.569-9.47a.75.75 0 01.554-.68zM3 10.5a.75.75 0 01.75-.75H6a.75.75 0 010 1.5H3.75A.75.75 0 013 10.5zm14.25 0a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H18a.75.75 0 01-.75-.75zm-8.962 3.712a.75.75 0 010 1.061l-1.591 1.591a.75.75 0 11-1.061-1.06l1.591-1.592a.75.75 0 011.06 0z"
+                      clipRule="evenodd"
                     />
                   </svg>
                   <span>Klickers</span>
@@ -206,6 +208,7 @@ export default function LogosBoxedwithHeading() {
             </a>
           </div>
           {/* END Logos col 2*/}
+
         </div>
       </div>
       {/* END Logos Section: Boxed with Heading */}
