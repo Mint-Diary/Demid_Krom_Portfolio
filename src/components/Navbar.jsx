@@ -1,205 +1,196 @@
-import { useState } from "react";
+"use client"
 
-// Headless UI 2.x for React, for more info and examples you can check out https://github.com/tailwindlabs/headlessui
-import { Transition } from "@headlessui/react";
+import { useState, useEffect } from "react"
+import { Transition } from "@headlessui/react"
 
 export default function MainHeadersSimple() {
-  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  const [buildingComplete, setBuildingComplete] = useState(false)
+
+  useEffect(() => {
+    // Complete building animation after 4 seconds
+    const timer = setTimeout(() => setBuildingComplete(true), 4000)
+    return () => clearTimeout(timer)
+  }, [])
 
   // Menu items array to populate both desktop and mobile links
   const menuItems = [
     {
-      name: "Features",
+      name: "FEATURES",
       url: "#",
     },
     {
-      name: "Pricing",
+      name: "PRICING",
       url: "#",
     },
     {
-      name: "Support",
+      name: "SUPPORT",
       url: "#",
     },
-  ];
+  ]
 
   return (
     <>
-      {/* Main Header Section: Simple */}
-      <div className="relative overflow-hidden bg-white dark:bg-slate-900 dark:text-slate-100">
+      {/* Main Header Section: Building Pixel Art */}
+      <div className="relative bg-[#101828] text-white h-21">
         {/* Main Header */}
         <header
-          id="page-header"
-          className="relative flex flex-none items-center py-8"
+          className={`building-navbar relative flex flex-none items-center pt-5 pb-4 bg-[#101828] overflow-hidden ${
+            buildingComplete ? "completion-flash" : ""
+          } ${buildingComplete ? "pointer-events-auto" : "pointer-events-none"}`}
         >
+          {/* Background building animation */}
+          <div className="absolute inset-0 bg-[#101828] animate-build-background" />
+
+          {/* Pixel borders */}
+          <div
+            className="absolute left-0 right-0 top-0 h-1 bg-gradient-to-r from-gray-600 via-gray-600 to-gray-600 bg-[length:12px_4px] bg-repeat-x animate-build-border-top"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(90deg, #374151 0px, #374151 8px, transparent 8px, transparent 12px)",
+            }}
+          />
+          <div
+            className="absolute left-0 right-0 bottom-0 h-1 bg-gradient-to-r from-gray-600 via-gray-600 to-gray-600 bg-[length:12px_4px] bg-repeat-x animate-build-border-bottom"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(90deg, #374151 0px, #374151 8px, transparent 8px, transparent 12px)",
+            }}
+          />
+
           {/* Main Header Content */}
-          <div className="container mx-auto flex items-center justify-between px-4 lg:px-8 xl:max-w-7xl">
+          <div className="container mx-auto flex items-center justify-between px-4 lg:px-8 xl:max-w-7xl relative z-10">
             {/* Left Section */}
             <div className="flex items-center">
               {/* Logo */}
-              <a
-                href="#"
-                className="group inline-flex items-center gap-2 text-lg font-bold tracking-wide text-slate-900 hover:text-slate-600 dark:text-slate-100 dark:hover:text-slate-300"
-              >
-                <svg
-                  className="hi-mini hi-cube-transparent inline-block size-5 text-teal-600 transition group-hover:scale-110 dark:text-teal-400"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
+              <div className="relative overflow-hidden">
+                <a
+                  href="#"
+                  className="logo-build group inline-flex items-center gap-3 text-lg font-bold tracking-wider text-green-400 hover:text-green-300 font-mono animate-build-logo"
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M9.638 1.093a.75.75 0 01.724 0l2 1.104a.75.75 0 11-.724 1.313L10 2.607l-1.638.903a.75.75 0 11-.724-1.313l2-1.104zM5.403 4.287a.75.75 0 01-.295 1.019l-.805.444.805.444a.75.75 0 01-.724 1.314L3.5 7.02v.73a.75.75 0 01-1.5 0v-2a.75.75 0 01.388-.657l1.996-1.1a.75.75 0 011.019.294zm9.194 0a.75.75 0 011.02-.295l1.995 1.101A.75.75 0 0118 5.75v2a.75.75 0 01-1.5 0v-.73l-.884.488a.75.75 0 11-.724-1.314l.806-.444-.806-.444a.75.75 0 01-.295-1.02zM7.343 8.284a.75.75 0 011.02-.294L10 8.893l1.638-.903a.75.75 0 11.724 1.313l-1.612.89v1.557a.75.75 0 01-1.5 0v-1.557l-1.612-.89a.75.75 0 01-.295-1.019zM2.75 11.5a.75.75 0 01.75.75v1.557l1.608.887a.75.75 0 01-.724 1.314l-1.996-1.101A.75.75 0 012 14.25v-2a.75.75 0 01.75-.75zm14.5 0a.75.75 0 01.75.75v2a.75.75 0 01-.388.657l-1.996 1.1a.75.75 0 11-.724-1.313l1.608-.887V12.25a.75.75 0 01.75-.75zm-7.25 4a.75.75 0 01.75.75v.73l.888-.49a.75.75 0 01.724 1.313l-2 1.104a.75.75 0 01-.724 0l-2-1.104a.75.75 0 11.724-1.313l.888.49v-.73a.75.75 0 01.75-.75z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span>Company</span>
-              </a>
-              {/* END Logo */}
+                  <div className="pixel-logo w-6 h-6 bg-green-400 relative animate-build-pixel-logo [image-rendering:pixelated]">
+                    <div className="absolute top-1 left-1 w-2 h-2 bg-black animate-build-pixel-detail-1" />
+                    <div className="absolute top-1 right-1 w-2 h-2 bg-black animate-build-pixel-detail-2" />
+                  </div>
+                  <div className="text-build relative overflow-hidden">
+                    <span className="text-xl">DEMID KROM</span>
+                    <div className="absolute inset-0 bg-gray-800 animate-reveal-text" />
+                  </div>
+                </a>
+              </div>
             </div>
-            {/* END Left Section */}
 
             {/* Right Section */}
             <div className="flex items-center">
               {/* Navigation */}
-              <nav className="hidden space-x-3 md:space-x-6 lg:block">
-                {menuItems.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.url}
-                    className="text-sm font-semibold text-slate-900 hover:text-teal-600 dark:text-slate-100 dark:hover:text-teal-400"
-                  >
-                    <span>{item.name}</span>
-                  </a>
+              <nav className="hidden space-x-2 lg:block">
+                {menuItems.map((item, index) => (
+                  <div key={item.name} className="inline-block overflow-hidden">
+                    <a
+                      href={item.url}
+                      className={`text-sm font-bold text-gray-300 hover:text-white hover:bg-gray-700 px-4 py-2 border-2 border-gray-600 hover:border-gray-500 font-mono inline-block transition-all duration-100 ease-linear hover:translate-x-px hover:translate-y-px [image-rendering:pixelated] animate-build-menu-${index + 1}`}
+                    >
+                      <span>{item.name}</span>
+                    </a>
+                  </div>
                 ))}
               </nav>
-              {/* END Navigation */}
 
               {/* Open Mobile Navigation */}
-              <div className="lg:hidden">
+              <div className="lg:hidden overflow-hidden">
                 <button
                   onClick={() => setMobileNavOpen(true)}
                   type="button"
-                  className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm leading-5 font-semibold text-slate-800 hover:border-slate-300 hover:text-slate-900 hover:shadow-xs focus:ring-3 focus:ring-slate-300/25 active:border-slate-200 active:shadow-none dark:border-slate-700 dark:bg-transparent dark:text-slate-300 dark:hover:border-slate-600 dark:hover:text-slate-200 dark:focus:ring-slate-600/40 dark:active:border-slate-700"
+                  className="mobile-button inline-flex items-center justify-center gap-2 bg-gray-700 border-2 border-gray-600 px-3 py-2 text-sm leading-5 font-bold text-white hover:bg-gray-600 hover:border-gray-500 transition-all duration-100 ease-linear hover:translate-x-px hover:translate-y-px [image-rendering:pixelated] animate-build-mobile-button"
                   aria-controls="tkMobileNav"
                 >
-                  <svg
-                    className="hi-mini hi-bars-3 inline-block size-5"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10zm0 5.25a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <div className="w-5 h-5 flex flex-col justify-center space-y-1">
+                    <div className="w-full h-1 bg-white"></div>
+                    <div className="w-full h-1 bg-white"></div>
+                    <div className="w-full h-1 bg-white"></div>
+                  </div>
                 </button>
               </div>
-              {/* END Open Mobile Navigation */}
             </div>
-            {/* END Right Section */}
           </div>
-          {/* END Main Header Content */}
 
           {/* Mobile Navigation */}
-          <Transition
-            show={mobileNavOpen}
-            enter="transition ease-out duration-200"
-            enterFrom="opacity-50 translate-x-full"
-            enterTo="opacity-100 translate-x-0"
-            leave="transition ease-in duration-150"
-            leaveFrom="opacity-100 translate-x-0"
-            leaveTo="opacity-50 translate-x-full"
-          >
-            <nav
-              id="tkMobileNav"
-              className="fixed top-0 right-0 bottom-0 z-50 w-72 overflow-auto bg-white/95 shadow-lg lg:hidden dark:bg-slate-800/95"
-              tabIndex={-1}
-              aria-labelledby="tkMobileNavLabel"
-              aria-modal="true"
-              role="dialog"
-            >
-              <div className="flex items-center justify-between p-6">
-                {/* Logo */}
-                <a
-                  id="tkMobileNavLabel"
-                  href="#"
-                  className="group inline-flex items-center gap-2 text-lg font-bold tracking-wide text-slate-900 hover:text-slate-600 dark:text-slate-100 dark:hover:text-slate-300"
+          <Transition show={mobileNavOpen}>
+            <div className="lg:hidden">
+              <Transition.Child
+                enter="transition ease-out duration-200"
+                enterFrom="opacity-50 translate-x-full"
+                enterTo="opacity-100 translate-x-0"
+                leave="transition ease-in duration-150"
+                leaveFrom="opacity-100 translate-x-0"
+                leaveTo="opacity-50 translate-x-full"
+              >
+                <nav
+                  id="tkMobileNav"
+                  className="fixed top-0 right-0 bottom-0 z-50 w-72 overflow-auto bg-gray-800 border-l-4 border-gray-600 shadow-lg"
+                  tabIndex={-1}
+                  aria-labelledby="tkMobileNavLabel"
+                  aria-modal="true"
+                  role="dialog"
                 >
-                  <svg
-                    className="hi-mini hi-cube-transparent inline-block size-5 text-teal-600 transition group-hover:scale-110 dark:text-teal-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M9.638 1.093a.75.75 0 01.724 0l2 1.104a.75.75 0 11-.724 1.313L10 2.607l-1.638.903a.75.75 0 11-.724-1.313l2-1.104zM5.403 4.287a.75.75 0 01-.295 1.019l-.805.444.805.444a.75.75 0 01-.724 1.314L3.5 7.02v.73a.75.75 0 01-1.5 0v-2a.75.75 0 01.388-.657l1.996-1.1a.75.75 0 011.019.294zm9.194 0a.75.75 0 011.02-.295l1.995 1.101A.75.75 0 0118 5.75v2a.75.75 0 01-1.5 0v-.73l-.884.488a.75.75 0 11-.724-1.314l.806-.444-.806-.444a.75.75 0 01-.295-1.02zM7.343 8.284a.75.75 0 011.02-.294L10 8.893l1.638-.903a.75.75 0 11.724 1.313l-1.612.89v1.557a.75.75 0 01-1.5 0v-1.557l-1.612-.89a.75.75 0 01-.295-1.019zM2.75 11.5a.75.75 0 01.75.75v1.557l1.608.887a.75.75 0 01-.724 1.314l-1.996-1.101A.75.75 0 012 14.25v-2a.75.75 0 01.75-.75zm14.5 0a.75.75 0 01.75.75v2a.75.75 0 01-.388.657l-1.996 1.1a.75.75 0 11-.724-1.313l1.608-.887V12.25a.75.75 0 01.75-.75zm-7.25 4a.75.75 0 01.75.75v.73l.888-.49a.75.75 0 01.724 1.313l-2 1.104a.75.75 0 01-.724 0l-2-1.104a.75.75 0 11.724-1.313l.888.49v-.73a.75.75 0 01.75-.75z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Company</span>
-                </a>
-                {/* END Logo */}
+                  <div className="flex items-center justify-between p-6 border-b-2 border-gray-700">
+                    {/* Logo */}
+                    <a
+                      id="tkMobileNavLabel"
+                      href="#"
+                      className="group inline-flex items-center gap-3 text-lg font-bold tracking-wider text-green-400 hover:text-green-300 font-mono"
+                    >
+                      <div className="w-6 h-6 bg-green-400 relative [image-rendering:pixelated]">
+                        <div className="absolute top-1 left-1 w-2 h-2 bg-black" />
+                        <div className="absolute top-1 right-1 w-2 h-2 bg-black" />
+                      </div>
+                      <span>DEMID KROM</span>
+                    </a>
 
-                {/* Close Mobile Navigation */}
-                <button
+                    {/* Close Mobile Navigation */}
+                    <button
+                      onClick={() => setMobileNavOpen(false)}
+                      type="button"
+                      className="inline-flex items-center justify-center gap-2 bg-gray-700 border-2 border-gray-600 px-3 py-2 text-sm leading-5 font-bold text-white hover:bg-gray-600 hover:border-gray-500 transition-all duration-100 ease-linear hover:translate-x-px hover:translate-y-px [image-rendering:pixelated]"
+                    >
+                      <div className="w-5 h-5 relative">
+                        <div className="absolute inset-0 w-full h-1 bg-white transform rotate-45 top-2"></div>
+                        <div className="absolute inset-0 w-full h-1 bg-white transform -rotate-45 top-2"></div>
+                      </div>
+                    </button>
+                  </div>
+                  <nav className="flex flex-col gap-1 px-6 py-5">
+                    {menuItems.map((item) => (
+                      <a
+                        key={item.name}
+                        href={item.url}
+                        className="py-3 px-4 text-sm font-bold text-gray-300 hover:text-white hover:bg-gray-700 border-2 border-gray-600 hover:border-gray-500 font-mono transition-all duration-100 ease-linear hover:translate-x-px hover:translate-y-px [image-rendering:pixelated]"
+                      >
+                        <span>{item.name}</span>
+                      </a>
+                    ))}
+                  </nav>
+                </nav>
+              </Transition.Child>
+
+              {/* Mobile Navigation Backdrop */}
+              <Transition.Child
+                enter="transition ease-out duration-200"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="transition ease-in duration-150"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+              >
+                <div
                   onClick={() => setMobileNavOpen(false)}
-                  type="button"
-                  className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm leading-5 font-semibold text-slate-800 hover:border-slate-300 hover:text-slate-900 hover:shadow-xs focus:ring-3 focus:ring-slate-300/25 active:border-slate-200 active:shadow-none dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-slate-600 dark:hover:text-slate-200 dark:focus:ring-slate-600/40 dark:active:border-slate-700"
-                >
-                  <svg
-                    className="hi-mini hi-x-mark -mx-0.5 inline-block size-5"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
-                  </svg>
-                </button>
-                {/* END Close Mobile Navigation */}
-              </div>
-              <div className="h-px bg-slate-200/75 dark:bg-slate-700/75" />
-              <nav className="flex flex-col gap-2 px-6 py-5">
-                {menuItems.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.url}
-                    className="py-1 text-sm font-semibold text-slate-900 hover:text-teal-600 dark:text-slate-100 dark:hover:text-teal-400"
-                  >
-                    <span>{item.name}</span>
-                  </a>
-                ))}
-              </nav>
-            </nav>
+                  className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
+                />
+              </Transition.Child>
+            </div>
           </Transition>
-          {/* END Mobile Navigation */}
-
-          {/* Mobile Navigation Backdrop */}
-          <Transition
-            show={mobileNavOpen}
-            enter="transition ease-out duration-200"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition ease-in duration-150"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div
-              onClick={() => setMobileNavOpen(false)}
-              className="fixed inset-0 z-40 bg-slate-900/20 backdrop-blur-xs will-change-auto lg:hidden dark:bg-slate-900/80"
-            />
-          </Transition>
-          {/* END Mobile Navigation Backdrop */}
         </header>
-        {/* END Main Header */}
       </div>
-      {/* END Main Header Section: Simple */}
     </>
-  );
+  )
 }

@@ -11,21 +11,168 @@
 @custom-variant hover (&:hover);
 
 /* Tailkit configuration */
-@theme {
-  /* Fonts */
-  --default-font-family: "Inter";
+@layer base {
+  :root {
+    /* Fonts */
+    --default-font-family: "Inter", Courier, monospace;
 
-  /* Spacing */
-  --spacing-8xl: 90rem;
-  --spacing-9xl: 105rem;
-  --spacing-10xl: 120rem;
+    /* Spacing */
+    --spacing-8xl: 90rem;
+    --spacing-9xl: 105rem;
+    --spacing-10xl: 120rem;
 
-  /* Animations */
-  --animate-spin-slow: spin-slow 8s linear infinite;
+    /* Animations */
+    --animate-spin-slow: spin-slow 8s linear infinite;
+  }
+}
 
-  @keyframes spin-slow {
-    100% {
-      transform: rotate(-360deg);
-    }
+@layer utilities {
+  /* Building animations */
+  .animate-build-background {
+    animation: buildBackground 1s ease-out forwards;
+    clip-path: inset(100% 0 0 0);
+  }
+
+  .animate-build-logo {
+    animation: buildElement 0.8s ease-out 1.2s forwards;
+    clip-path: inset(100% 0 0 0);
+  }
+
+  .animate-build-menu-1 {
+    animation: buildElement 0.6s ease-out 2.2s forwards;
+    clip-path: inset(100% 0 0 0);
+  }
+
+  .animate-build-menu-2 {
+    animation: buildElement 0.6s ease-out 2.6s forwards;
+    clip-path: inset(100% 0 0 0);
+  }
+
+  .animate-build-menu-3 {
+    animation: buildElement 0.6s ease-out 3.0s forwards;
+    clip-path: inset(100% 0 0 0);
+  }
+
+  .animate-build-mobile-button {
+    animation: buildElement 0.4s ease-out 3.4s forwards;
+    clip-path: inset(100% 0 0 0);
+  }
+
+  .animate-build-pixel-logo {
+    animation: buildPixelLogo 0.5s ease-out 1.5s forwards;
+    transform: scale(0);
+  }
+
+  .animate-build-pixel-detail-1 {
+    animation: buildPixelDetail 0.2s ease-out 1.8s forwards;
+    opacity: 0;
+  }
+
+  .animate-build-pixel-detail-2 {
+    animation: buildPixelDetail 0.2s ease-out 2.0s forwards;
+    opacity: 0;
+  }
+
+  .animate-reveal-text {
+    animation: revealText 0.8s ease-out 1.7s forwards;
+    transform: translateX(0);
+  }
+
+  .animate-build-border-top {
+    animation: buildBorderTop 1s ease-out 0.5s forwards;
+    clip-path: inset(0 100% 0 0);
+  }
+
+  .animate-build-border-bottom {
+    animation: buildBorderBottom 1s ease-out 3.8s forwards;
+    clip-path: inset(0 100% 0 0);
+  }
+
+  .completion-flash {
+    animation: completionFlash 0.3s ease-out;
+  }
+}
+
+/* Keyframes */
+@keyframes buildBackground {
+  0% {
+    clip-path: inset(100% 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes buildElement {
+  0% {
+    clip-path: inset(100% 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes buildPixelLogo {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes buildPixelDetail {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes revealText {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes buildBorderTop {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes buildBorderBottom {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes completionFlash {
+  0%, 100% {
+    background: #1f2937;
+  }
+  50% {
+    background: #374151;
+  }
+}
+
+@keyframes spin-slow {
+  100% {
+    transform: rotate(-360deg);
   }
 }
