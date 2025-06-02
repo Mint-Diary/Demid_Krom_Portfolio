@@ -5,6 +5,7 @@ import Timeline from "./components/Timeline";
 import ProfileCard from "./components/ProfileCard";
 import Tech from "./components/Tech";
 import Contact from "./components/Contact";
+import Testimonials from "./components/Testimonials";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Timeline />
       <Tech />
       <ProfileCard />
+      <Testimonials />
       <Contact />
       <Footer />
     </>
