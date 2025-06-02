@@ -1,35 +1,49 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Transition } from "@headlessui/react"
-import { useTranslation, LanguageSwitcher } from "../i18n/index.jsx"
+import { useState, useEffect } from "react";
+import { Transition } from "@headlessui/react";
+import { useTranslation, LanguageSwitcher } from "../i18n/index.jsx";
+import { useLocation } from "react-router-dom";
 
 export default function MainHeadersSimple() {
-  const [mobileNavOpen, setMobileNavOpen] = useState(false)
-  const [buildingComplete, setBuildingComplete] = useState(false)
-  const { t } = useTranslation()
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [buildingComplete, setBuildingComplete] = useState(false);
+  const { t } = useTranslation();
+  const location = useLocation();
 
   useEffect(() => {
     // Complete building animation after 4 seconds
-    const timer = setTimeout(() => setBuildingComplete(true), 4000)
-    return () => clearTimeout(timer)
-  }, [])
+    const timer = setTimeout(() => setBuildingComplete(true), 4000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setMobileNavOpen(false);
+    }
+  };
 
   // Menu items array to populate both desktop and mobile links
   const menuItems = [
     {
-      name: t('nav.features'),
-      url: "#features",
+      name: t("nav.tech"),
+      id: "tech",
     },
     {
-      name: t('nav.pricing'),
-      url: "#pricing",
+      name: t("nav.timeline"),
+      id: "timeline",
     },
     {
-      name: t('nav.support'),
-      url: "#support",
+      name: t("nav.about"),
+      id: "about",
     },
-  ]
+    {
+      name: t("nav.contact"),
+      id: "contact",
+    },
+  ];
 
   return (
     <>
@@ -66,8 +80,8 @@ export default function MainHeadersSimple() {
             <div className="flex items-center">
               {/* Logo */}
               <div className="relative overflow-hidden">
-                <a
-                  href="#"
+                <button
+                  onClick={() => scrollToSection("home")}
                   className="logo-build group inline-flex items-center gap-3 text-lg font-bold tracking-wider text-green-400 hover:text-green-300 font-mono animate-build-logo"
                 >
                   <div className="pixel-logo w-6 h-6 bg-green-400 relative animate-build-pixel-logo [image-rendering:pixelated]">
@@ -75,10 +89,10 @@ export default function MainHeadersSimple() {
                     <div className="absolute top-1 right-1 w-2 h-2 bg-black animate-build-pixel-detail-2" />
                   </div>
                   <div className="text-build relative overflow-hidden">
-                    <span className="text-xl">{t('nav.logo')}</span>
+                    <span className="text-xl">{t("nav.logo")}</span>
                     <div className="absolute inset-0 bg-gray-800 animate-reveal-text" />
                   </div>
-                </a>
+                </button>
               </div>
             </div>
 
@@ -91,12 +105,12 @@ export default function MainHeadersSimple() {
               <nav className="hidden space-x-2 lg:block">
                 {menuItems.map((item, index) => (
                   <div key={item.name} className="inline-block overflow-hidden">
-                    <a
-                      href={item.url}
+                    <button
+                      onClick={() => scrollToSection(item.id)}
                       className={`text-sm font-bold text-gray-300 hover:text-white hover:bg-gray-700 px-4 py-2 border-2 border-gray-600 hover:border-gray-500 font-mono inline-block transition-all duration-100 ease-linear hover:translate-x-px hover:translate-y-px [image-rendering:pixelated] animate-build-menu-${index + 1}`}
                     >
                       <span>{item.name}</span>
-                    </a>
+                    </button>
                   </div>
                 ))}
               </nav>
@@ -108,7 +122,7 @@ export default function MainHeadersSimple() {
                   type="button"
                   className="mobile-button inline-flex items-center justify-center gap-2 bg-gray-700 border-2 border-gray-600 px-3 py-2 text-sm leading-5 font-bold text-white hover:bg-gray-600 hover:border-gray-500 transition-all duration-100 ease-linear hover:translate-x-px hover:translate-y-px [image-rendering:pixelated] animate-build-mobile-button"
                   aria-controls="tkMobileNav"
-                  aria-label={t('common.menu')}
+                  aria-label={t("common.menu")}
                 >
                   <div className="w-5 h-5 flex flex-col justify-center space-y-1">
                     <div className="w-full h-1 bg-white"></div>
@@ -141,24 +155,27 @@ export default function MainHeadersSimple() {
                 >
                   <div className="flex items-center justify-between p-6 border-b-2 border-gray-700">
                     {/* Logo */}
-                    <a
+                    <button
                       id="tkMobileNavLabel"
-                      href="#"
+                      onClick={() => {
+                        scrollToSection("home");
+                        setMobileNavOpen(false);
+                      }}
                       className="group inline-flex items-center gap-3 text-lg font-bold tracking-wider text-green-400 hover:text-green-300 font-mono"
                     >
                       <div className="w-6 h-6 bg-green-400 relative [image-rendering:pixelated]">
                         <div className="absolute top-1 left-1 w-2 h-2 bg-black" />
                         <div className="absolute top-1 right-1 w-2 h-2 bg-black" />
                       </div>
-                      <span>{t('nav.logo')}</span>
-                    </a>
+                      <span>{t("nav.logo")}</span>
+                    </button>
 
                     {/* Close Mobile Navigation */}
                     <button
                       onClick={() => setMobileNavOpen(false)}
                       type="button"
                       className="inline-flex items-center justify-center gap-2 bg-gray-700 border-2 border-gray-600 px-3 py-2 text-sm leading-5 font-bold text-white hover:bg-gray-600 hover:border-gray-500 transition-all duration-100 ease-linear hover:translate-x-px hover:translate-y-px [image-rendering:pixelated]"
-                      aria-label={t('common.close')}
+                      aria-label={t("common.close")}
                     >
                       <div className="w-5 h-5 relative">
                         <div className="absolute inset-0 w-full h-1 bg-white transform rotate-45 top-2"></div>
@@ -174,14 +191,13 @@ export default function MainHeadersSimple() {
 
                   <nav className="flex flex-col gap-1 px-6 py-5">
                     {menuItems.map((item) => (
-                      <a
+                      <button
                         key={item.name}
-                        href={item.url}
-                        onClick={() => setMobileNavOpen(false)}
+                        onClick={() => scrollToSection(item.id)}
                         className="py-3 px-4 text-sm font-bold text-gray-300 hover:text-white hover:bg-gray-700 border-2 border-gray-600 hover:border-gray-500 font-mono transition-all duration-100 ease-linear hover:translate-x-px hover:translate-y-px [image-rendering:pixelated]"
                       >
                         <span>{item.name}</span>
-                      </a>
+                      </button>
                     ))}
                   </nav>
                 </nav>
@@ -206,5 +222,5 @@ export default function MainHeadersSimple() {
         </header>
       </div>
     </>
-  )
+  );
 }

@@ -2,49 +2,80 @@
 export default {
   // Navigation
   nav: {
-    features: "FUNKTIONEN",
-    pricing: "PREISE",
-    support: "SUPPORT",
-    logo: "DEMID KROM"
+    logo: "DEMID KROM",
+    tech: "TECHNOLOGIEN",
+    timeline: "WERDEGANG",
+    about: "ÜBER MICH",
+    contact: "KONTAKT"
   },
 
   // Hero section
   hero: {
     title: "Full Stack Entwickler",
     subtitle: "Moderne Webanwendungen mit Leidenschaft entwickeln",
-    description: "Außergewöhnliche digitale Erlebnisse mit modernsten Technologien schaffen",
+    description: "Mit Erfahrung in modernen Web-Technologien entwickle ich außergewöhnliche digitale Erlebnisse, die Menschen begeistern",
     cta: "Kontakt aufnehmen",
-    ctaSecondary: "Meine Arbeit ansehen",
+    ctaSecondary: "Meine Arbeit",
     scrollDown: "Nach unten scrollen",
     greeting: "Hallo, ich bin",
-    specialization: "Ich spezialisiere mich auf innovative Lösungen"
+    specialization: "Ich entwickle innovative Lösungen",
+    cards: {
+      ide: "IDE Entwicklung",
+      mobile: "Mobile Entwicklung",
+      vr: "VR Entwicklung"
+    }
   },
 
   // Timeline
   timeline: {
     title: "Mein Werdegang",
     subtitle: "Ein Überblick über meine berufliche Entwicklung",
-    education: "Bildung",
-    experience: "Erfahrung",
-    projects: "Projekte",
-    achievements: "Erfolge",
-    present: "Gegenwart",
-    viewMore: "Mehr anzeigen",
-    viewLess: "Weniger anzeigen"
+    events: {
+      current: {
+        title: "Senior Full Stack Entwickler",
+        company: "TechForward GmbH",
+        description: "Leitung der Entwicklung moderner Webanwendungen mit React und Spring Boot. Implementierung von Microservices und Cloud-nativen Lösungen."
+      },
+      previous: {
+        title: "Backend Entwickler",
+        company: "DataSolutions AG",
+        description: "Entwicklung skalierbarer Backend-Systeme und Optimierung von Datenbankabfragen. Integration von REST-APIs und Microservices."
+      },
+      education: {
+        title: "Informatik Studium",
+        company: "Technische Universität Berlin",
+        description: "Schwerpunkt auf Softwareentwicklung und Datenbanksysteme. Abschluss mit Auszeichnung."
+      }
+    },
+    tags: {
+      fullstack: "Full Stack",
+      react: "React",
+      spring: "Spring Boot",
+      java: "Java",
+      backend: "Backend",
+      sql: "SQL",
+      computerScience: "Informatik",
+      algorithms: "Algorithmen",
+      databases: "Datenbanken"
+    }
   },
 
   // Tech stack
   tech: {
-    title: "Technologien mit denen ich arbeite",
-    subtitle: "Meine technische Expertise und bevorzugte Tools",
+    title: "Technologien",
+    subtitle: "Meine technische Expertise und bevorzugte Werkzeuge",
     frontend: "Frontend",
+    frontendDesc: "Entwicklung moderner, reaktiver Benutzeroberflächen mit React, Vue.js und TypeScript",
     backend: "Backend",
-    database: "Datenbank",
-    tools: "Tools & Sonstiges",
-    cloud: "Cloud & DevOps",
-    mobile: "Mobile Entwicklung",
-    learning: "Derzeit lerne ich",
-    proficiency: "Kenntnislevel"
+    backendDesc: "Skalierbare Server-Architekturen mit Java Spring Boot und Node.js",
+    devops: "DevOps",
+    devopsDesc: "Containerisierung und CI/CD mit Docker, Kubernetes und GitLab",
+    proficiencyLevels: {
+      expert: "Experte",
+      advanced: "Fortgeschritten",
+      intermediate: "Mittel",
+      beginner: "Anfänger"
+    }
   },
 
   // Profile
@@ -61,53 +92,54 @@ export default {
     contactMe: "Kontaktieren Sie mich",
     location: "Ansässig in",
     availability: "Verfügbar für Freelance",
-    passion: "Leidenschaftlich für sauberen Code und Benutzererfahrung"
+    passion: "Leidenschaftlich für sauberen Code und Benutzererfahrung",
+    name: "Demid Krom",
+    email: "contact@demidkrom.dev",
+    bio: "Full Stack Entwickler mit Leidenschaft für innovative Lösungen"
   },
 
   // Testimonials
   testimonials: {
-    title: "Was Leute sagen",
-    subtitle: "Feedback von Kunden und Kollegen",
-    clientFeedback: "Kundenfeedback",
-    readMore: "Mehr lesen",
-    readLess: "Weniger lesen",
-    rating: "Bewertung",
-    noTestimonials: "Noch keine Testimonials verfügbar"
+    title: "Referenzen",
+    subtitle: "Was andere über die Zusammenarbeit mit mir sagen. Ich lege Wert auf sauberen Code, Zusammenarbeit und bedeutungsvolle Ergebnisse.",
+    at: "bei",
+    items: {
+      first: {
+        text: "Demid hat unsere Webanwendungen komplett transformiert. Sein moderner Entwicklungsansatz hat uns unzählige Entwicklungsstunden erspart und dabei professionelle Ergebnisse geliefert. Die Lösungen sind intuitiv für unser Marketing-Team und gleichzeitig leistungsfähig genug für komplexe Funktionalitäten.",
+        author: "Sarah Chen",
+        role: "CTO",
+        company: "TechFlow"
+      },
+      second: {
+        text: "Die Zusammenarbeit mit Demid war eine ausgezeichnete Erfahrung. Seine technische Expertise und sein Verständnis für Geschäftsanforderungen haben unsere Erwartungen übertroffen.",
+        author: "Michael Schmidt",
+        role: "Projektmanager",
+        company: "Digital Solutions GmbH"
+      },
+      third: {
+        text: "Beeindruckende technische Fähigkeiten gepaart mit einer klaren Kommunikation. Demid hat nicht nur geliefert, was wir brauchten, sondern auch proaktiv Verbesserungen vorgeschlagen.",
+        author: "Lisa Weber",
+        role: "Produktmanagerin",
+        company: "Innovation Labs"
+      }
+    }
   },
 
   // Contact
   contact: {
     title: "Kontakt aufnehmen",
-    subtitle: "Lassen Sie uns an Ihrem nächsten Projekt zusammenarbeiten",
-    description: "Haben Sie ein Projekt im Kopf? Ich würde gerne davon hören. Senden Sie mir eine Nachricht und lassen Sie uns besprechen, wie wir Ihre Ideen zum Leben erwecken können.",
+    subtitle: "Antwort innerhalb von 24 Stunden",
+    description: "Haben Sie Fragen? Kontaktieren Sie mich und ich melde mich schnellstmöglich bei Ihnen zurück.",
+    companyName: "Demid Krom",
+    address: "Berlin, Deutschland",
     form: {
-      name: "Vollständiger Name",
-      namePlaceholder: "Geben Sie Ihren vollständigen Namen ein",
-      email: "E-Mail-Adresse",
-      emailPlaceholder: "Geben Sie Ihre E-Mail-Adresse ein",
-      subject: "Betreff",
-      subjectPlaceholder: "Worum geht es?",
-      message: "Nachricht",
-      messagePlaceholder: "Erzählen Sie mir von Ihrem Projekt...",
-      send: "Nachricht senden",
-      sending: "Wird gesendet...",
-      success: "Nachricht erfolgreich gesendet!",
-      error: "Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut."
-    },
-    info: {
-      phone: "Telefon",
+      name: "Name",
+      namePlaceholder: "Max Mustermann",
       email: "E-Mail",
-      location: "Standort",
-      availability: "Verfügbarkeit",
-      response: "Antwortzeit",
-      responseTime: "Innerhalb von 24 Stunden"
-    },
-    social: {
-      title: "Folgen Sie mir",
-      github: "GitHub",
-      linkedin: "LinkedIn",
-      twitter: "Twitter",
-      instagram: "Instagram"
+      emailPlaceholder: "max.mustermann@example.com",
+      message: "Nachricht",
+      messagePlaceholder: "Ihre Nachricht hier...",
+      submit: "Absenden"
     }
   },
 
