@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from "react"
 import { Transition } from "@headlessui/react"
+import { useTranslation, LanguageSwitcher } from "../i18n/index.jsx"
 
 export default function MainHeadersSimple() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   const [buildingComplete, setBuildingComplete] = useState(false)
+  const { t } = useTranslation()
 
   useEffect(() => {
     // Complete building animation after 4 seconds
@@ -16,16 +18,16 @@ export default function MainHeadersSimple() {
   // Menu items array to populate both desktop and mobile links
   const menuItems = [
     {
-      name: "FEATURES",
-      url: "#",
+      name: t('nav.features'),
+      url: "#features",
     },
     {
-      name: "PRICING",
-      url: "#",
+      name: t('nav.pricing'),
+      url: "#pricing",
     },
     {
-      name: "SUPPORT",
-      url: "#",
+      name: t('nav.support'),
+      url: "#support",
     },
   ]
 
@@ -73,7 +75,7 @@ export default function MainHeadersSimple() {
                     <div className="absolute top-1 right-1 w-2 h-2 bg-black animate-build-pixel-detail-2" />
                   </div>
                   <div className="text-build relative overflow-hidden">
-                    <span className="text-xl">DEMID KROM</span>
+                    <span className="text-xl">{t('nav.logo')}</span>
                     <div className="absolute inset-0 bg-gray-800 animate-reveal-text" />
                   </div>
                 </a>
@@ -81,7 +83,10 @@ export default function MainHeadersSimple() {
             </div>
 
             {/* Right Section */}
-            <div className="flex items-center">
+            <div className="flex items-center gap-3">
+              {/* Language Switcher */}
+              <LanguageSwitcher className="hidden lg:block" />
+
               {/* Navigation */}
               <nav className="hidden space-x-2 lg:block">
                 {menuItems.map((item, index) => (
@@ -103,6 +108,7 @@ export default function MainHeadersSimple() {
                   type="button"
                   className="mobile-button inline-flex items-center justify-center gap-2 bg-gray-700 border-2 border-gray-600 px-3 py-2 text-sm leading-5 font-bold text-white hover:bg-gray-600 hover:border-gray-500 transition-all duration-100 ease-linear hover:translate-x-px hover:translate-y-px [image-rendering:pixelated] animate-build-mobile-button"
                   aria-controls="tkMobileNav"
+                  aria-label={t('common.menu')}
                 >
                   <div className="w-5 h-5 flex flex-col justify-center space-y-1">
                     <div className="w-full h-1 bg-white"></div>
@@ -144,7 +150,7 @@ export default function MainHeadersSimple() {
                         <div className="absolute top-1 left-1 w-2 h-2 bg-black" />
                         <div className="absolute top-1 right-1 w-2 h-2 bg-black" />
                       </div>
-                      <span>DEMID KROM</span>
+                      <span>{t('nav.logo')}</span>
                     </a>
 
                     {/* Close Mobile Navigation */}
@@ -152,6 +158,7 @@ export default function MainHeadersSimple() {
                       onClick={() => setMobileNavOpen(false)}
                       type="button"
                       className="inline-flex items-center justify-center gap-2 bg-gray-700 border-2 border-gray-600 px-3 py-2 text-sm leading-5 font-bold text-white hover:bg-gray-600 hover:border-gray-500 transition-all duration-100 ease-linear hover:translate-x-px hover:translate-y-px [image-rendering:pixelated]"
+                      aria-label={t('common.close')}
                     >
                       <div className="w-5 h-5 relative">
                         <div className="absolute inset-0 w-full h-1 bg-white transform rotate-45 top-2"></div>
@@ -159,11 +166,18 @@ export default function MainHeadersSimple() {
                       </div>
                     </button>
                   </div>
+
+                  {/* Mobile Language Switcher */}
+                  <div className="px-6 py-3 border-b-2 border-gray-700">
+                    <LanguageSwitcher />
+                  </div>
+
                   <nav className="flex flex-col gap-1 px-6 py-5">
                     {menuItems.map((item) => (
                       <a
                         key={item.name}
                         href={item.url}
+                        onClick={() => setMobileNavOpen(false)}
                         className="py-3 px-4 text-sm font-bold text-gray-300 hover:text-white hover:bg-gray-700 border-2 border-gray-600 hover:border-gray-500 font-mono transition-all duration-100 ease-linear hover:translate-x-px hover:translate-y-px [image-rendering:pixelated]"
                       >
                         <span>{item.name}</span>

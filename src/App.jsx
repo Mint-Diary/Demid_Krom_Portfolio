@@ -1,3 +1,4 @@
+import { LanguageProvider } from "./i18n/index.jsx";
 import Navbar from "./components/Navbar";
 import MainHeader from "./components/Hero.jsx";
 import Footer from "./components/Footer";
@@ -9,7 +10,7 @@ import Testimonials from "./components/Testimonials";
 
 function App() {
   return (
-    <>
+    <LanguageProvider>
       <Navbar />
       <MainHeader />
       <Timeline />
@@ -18,7 +19,7 @@ function App() {
       <Testimonials />
       <Contact />
       <Footer />
-    </>
+    </LanguageProvider>
   );
 }
 
