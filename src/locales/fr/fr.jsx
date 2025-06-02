@@ -2,49 +2,80 @@
 export default {
   // Navigation
   nav: {
-    features: "FONCTIONNALITÉS",
-    pricing: "TARIFS",
-    support: "SUPPORT",
-    logo: "DEMID KROM"
+    logo: "DEMID KROM",
+    tech: "TECHNOLOGIES",
+    timeline: "PARCOURS",
+    about: "À PROPOS",
+    contact: "CONTACT"
   },
 
   // Hero section
   hero: {
     title: "Développeur Full Stack",
     subtitle: "Créer des applications web modernes avec passion",
-    description: "Créer des expériences numériques exceptionnelles avec des technologies de pointe",
-    cta: "Prendre contact",
-    ctaSecondary: "Voir mon travail",
-    scrollDown: "Faire défiler vers le bas",
+    description: "Fort d'une expérience en technologies web modernes, je crée des expériences numériques exceptionnelles qui inspirent les gens",
+    cta: "Me contacter",
+    ctaSecondary: "Mes Travaux",
+    scrollDown: "Défiler vers le bas",
     greeting: "Bonjour, je suis",
-    specialization: "Je me spécialise dans la création de solutions innovantes"
+    specialization: "Je crée des solutions innovantes",
+    cards: {
+      ide: "Développement IDE",
+      mobile: "Développement Mobile",
+      vr: "Développement VR"
+    }
   },
 
   // Timeline
   timeline: {
     title: "Mon Parcours",
-    subtitle: "Une feuille de route de ma croissance professionnelle",
-    education: "Éducation",
-    experience: "Expérience",
-    projects: "Projets",
-    achievements: "Réalisations",
-    present: "Présent",
-    viewMore: "Voir plus",
-    viewLess: "Voir moins"
+    subtitle: "Un aperçu de mon évolution professionnelle",
+    events: {
+      current: {
+        title: "Développeur Full Stack Senior",
+        company: "TechForward GmbH",
+        description: "Direction du développement d'applications web modernes avec React et Spring Boot. Implémentation de microservices et solutions cloud-natives."
+      },
+      previous: {
+        title: "Développeur Backend",
+        company: "DataSolutions AG",
+        description: "Développement de systèmes backend évolutifs et optimisation des requêtes de base de données. Intégration d'APIs REST et microservices."
+      },
+      education: {
+        title: "Études en Informatique",
+        company: "Université Technique de Berlin",
+        description: "Spécialisation en développement logiciel et systèmes de bases de données. Diplômé avec mention."
+      }
+    },
+    tags: {
+      fullstack: "Full Stack",
+      react: "React",
+      spring: "Spring Boot",
+      java: "Java",
+      backend: "Backend",
+      sql: "SQL",
+      computerScience: "Informatique",
+      algorithms: "Algorithmes",
+      databases: "Bases de données"
+    }
   },
 
   // Tech stack
   tech: {
-    title: "Technologies avec lesquelles je travaille",
-    subtitle: "Mon expertise technique et outils préférés",
+    title: "Technologies",
+    subtitle: "Mon expertise technique et mes outils préférés",
     frontend: "Frontend",
+    frontendDesc: "Création d'interfaces utilisateur modernes et réactives avec React, Vue.js et TypeScript",
     backend: "Backend",
-    database: "Base de données",
-    tools: "Outils & Autres",
-    cloud: "Cloud & DevOps",
-    mobile: "Développement Mobile",
-    learning: "Actuellement en apprentissage",
-    proficiency: "Niveau de compétence"
+    backendDesc: "Architectures serveur évolutives avec Java Spring Boot et Node.js",
+    devops: "DevOps",
+    devopsDesc: "Conteneurisation et CI/CD avec Docker, Kubernetes et GitLab",
+    proficiencyLevels: {
+      expert: "Expert",
+      advanced: "Avancé",
+      intermediate: "Intermédiaire",
+      beginner: "Débutant"
+    }
   },
 
   // Profile
@@ -61,18 +92,37 @@ export default {
     contactMe: "Me contacter",
     location: "Basé à",
     availability: "Disponible pour du freelance",
-    passion: "Passionné par le code propre et l'expérience utilisateur"
+    passion: "Passionné par le code propre et l'expérience utilisateur",
+    name: "Demid Krom",
+    email: "contact@demidkrom.dev",
+    bio: "Développeur Full Stack passionné par les solutions innovantes"
   },
 
   // Testimonials
   testimonials: {
-    title: "Ce que disent les gens",
-    subtitle: "Commentaires de clients et collègues",
-    clientFeedback: "Commentaires clients",
-    readMore: "Lire plus",
-    readLess: "Lire moins",
-    rating: "Note",
-    noTestimonials: "Aucun témoignage disponible pour le moment"
+    title: "Témoignages",
+    subtitle: "Ce que les autres disent de notre collaboration. Je privilégie le code propre, la collaboration et des résultats qui comptent.",
+    at: "chez",
+    items: {
+      first: {
+        text: "Demid a complètement transformé notre façon de construire des applications web. Son approche de développement moderne nous a fait gagner d'innombrables heures tout en livrant un résultat professionnel. Les solutions sont assez intuitives pour notre équipe marketing et suffisamment puissantes pour des fonctionnalités complexes.",
+        author: "Sarah Chen",
+        role: "CTO",
+        company: "TechFlow"
+      },
+      second: {
+        text: "Travailler avec Demid a été une excellente expérience. Son expertise technique et sa compréhension des besoins commerciaux ont dépassé nos attentes.",
+        author: "Michael Schmidt",
+        role: "Chef de projet",
+        company: "Digital Solutions GmbH"
+      },
+      third: {
+        text: "Des compétences techniques impressionnantes associées à une communication claire. Demid n'a pas seulement livré ce dont nous avions besoin, il a aussi proposé des améliorations de manière proactive.",
+        author: "Lisa Weber",
+        role: "Chef de produit",
+        company: "Innovation Labs"
+      }
+    }
   },
 
   // Contact
@@ -80,19 +130,16 @@ export default {
     title: "Prendre contact",
     subtitle: "Travaillons ensemble sur votre prochain projet",
     description: "Vous avez un projet en tête ? J'aimerais en entendre parler. Envoyez-moi un message et discutons de la façon dont nous pouvons donner vie à vos idées.",
+    companyName: "Demid Krom",
+    address: "Paris, France",
     form: {
-      name: "Nom complet",
-      namePlaceholder: "Entrez votre nom complet",
-      email: "Adresse e-mail",
-      emailPlaceholder: "Entrez votre adresse e-mail",
-      subject: "Sujet",
-      subjectPlaceholder: "De quoi s'agit-il ?",
+      name: "Nom",
+      namePlaceholder: "Jean Dupont",
+      email: "E-mail",
+      emailPlaceholder: "jean.dupont@example.com",
       message: "Message",
-      messagePlaceholder: "Parlez-moi de votre projet...",
-      send: "Envoyer le message",
-      sending: "Envoi en cours...",
-      success: "Message envoyé avec succès !",
-      error: "Échec de l'envoi du message. Veuillez réessayer."
+      messagePlaceholder: "Votre message ici...",
+      submit: "Envoyer"
     },
     info: {
       phone: "Téléphone",

@@ -1,4 +1,8 @@
+import { useTranslation } from "../i18n/index.jsx";
+
 export default function CardsUserwithInfo() {
+  const { t } = useTranslation();
+
   return (
     <>
       {/* Cards: User with Info */}
@@ -26,9 +30,14 @@ export default function CardsUserwithInfo() {
 
           {/* Card Body */}
           <div className="grow p-5 text-center">
-            <h3 className="mt-3 mb-1 text-lg font-semibold">Jeremy Theodore</h3>
+            <h3 className="mt-3 mb-1 text-lg font-semibold">
+              {t("profile.name")}
+            </h3>
             <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
-              j.theodore@example.com
+              {t("profile.email")}
+            </p>
+            <p className="mt-3 text-slate-600 dark:text-slate-400">
+              {t("profile.bio")}
             </p>
           </div>
           {/* END Card Body */}

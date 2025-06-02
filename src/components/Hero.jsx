@@ -3,6 +3,7 @@
 import { useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { useTranslation } from "../i18n/index.jsx";
 
 // Particle Grid with Lines Component
 function ParticleGridWave() {
@@ -55,7 +56,14 @@ function ParticleGridWave() {
           const rightIndex = i * (segments + 1) + (j + 1);
 
           // Add line from current to right
-          linePositions.push(positions[currentIndex * 3], positions[currentIndex * 3 + 1], positions[currentIndex * 3 + 2], positions[rightIndex * 3], positions[rightIndex * 3 + 1], positions[rightIndex * 3 + 2]);
+          linePositions.push(
+            positions[currentIndex * 3],
+            positions[currentIndex * 3 + 1],
+            positions[currentIndex * 3 + 2],
+            positions[rightIndex * 3],
+            positions[rightIndex * 3 + 1],
+            positions[rightIndex * 3 + 2],
+          );
 
           // Line colors (green theme)
           lineColors.push(0.1, 0.8, 0.2, 0.1, 0.8, 0.2);
@@ -66,7 +74,14 @@ function ParticleGridWave() {
           const bottomIndex = (i + 1) * (segments + 1) + j;
 
           // Add line from current to bottom
-          linePositions.push(positions[currentIndex * 3], positions[currentIndex * 3 + 1], positions[currentIndex * 3 + 2], positions[bottomIndex * 3], positions[bottomIndex * 3 + 1], positions[bottomIndex * 3 + 2]);
+          linePositions.push(
+            positions[currentIndex * 3],
+            positions[currentIndex * 3 + 1],
+            positions[currentIndex * 3 + 2],
+            positions[bottomIndex * 3],
+            positions[bottomIndex * 3 + 1],
+            positions[bottomIndex * 3 + 2],
+          );
 
           // Line colors
           lineColors.push(0.1, 0.8, 0.2, 0.1, 0.8, 0.2);
@@ -75,14 +90,18 @@ function ParticleGridWave() {
     }
 
     return {
-      positions, linePositions: new Float32Array(linePositions), colors, lineColors: new Float32Array(lineColors)
+      positions,
+      linePositions: new Float32Array(linePositions),
+      colors,
+      lineColors: new Float32Array(lineColors),
     };
   }, [segments, spacing, gridSize]);
 
   useFrame((state) => {
     if (pointsRef.current && linesRef.current) {
       const time = state.clock.getElapsedTime();
-      const pointPositions = pointsRef.current.geometry.attributes.position.array;
+      const pointPositions =
+        pointsRef.current.geometry.attributes.position.array;
       const linePositions = linesRef.current.geometry.attributes.position.array;
 
       // Update particle positions with wave animation
@@ -114,13 +133,17 @@ function ParticleGridWave() {
 
             // Start point
             linePositions[lineIndex * 6] = pointPositions[currentIndex * 3];
-            linePositions[lineIndex * 6 + 1] = pointPositions[currentIndex * 3 + 1];
-            linePositions[lineIndex * 6 + 2] = pointPositions[currentIndex * 3 + 2];
+            linePositions[lineIndex * 6 + 1] =
+              pointPositions[currentIndex * 3 + 1];
+            linePositions[lineIndex * 6 + 2] =
+              pointPositions[currentIndex * 3 + 2];
 
             // End point
             linePositions[lineIndex * 6 + 3] = pointPositions[rightIndex * 3];
-            linePositions[lineIndex * 6 + 4] = pointPositions[rightIndex * 3 + 1];
-            linePositions[lineIndex * 6 + 5] = pointPositions[rightIndex * 3 + 2];
+            linePositions[lineIndex * 6 + 4] =
+              pointPositions[rightIndex * 3 + 1];
+            linePositions[lineIndex * 6 + 5] =
+              pointPositions[rightIndex * 3 + 2];
 
             lineIndex++;
           }
@@ -131,13 +154,17 @@ function ParticleGridWave() {
 
             // Start point
             linePositions[lineIndex * 6] = pointPositions[currentIndex * 3];
-            linePositions[lineIndex * 6 + 1] = pointPositions[currentIndex * 3 + 1];
-            linePositions[lineIndex * 6 + 2] = pointPositions[currentIndex * 3 + 2];
+            linePositions[lineIndex * 6 + 1] =
+              pointPositions[currentIndex * 3 + 1];
+            linePositions[lineIndex * 6 + 2] =
+              pointPositions[currentIndex * 3 + 2];
 
             // End point
             linePositions[lineIndex * 6 + 3] = pointPositions[bottomIndex * 3];
-            linePositions[lineIndex * 6 + 4] = pointPositions[bottomIndex * 3 + 1];
-            linePositions[lineIndex * 6 + 5] = pointPositions[bottomIndex * 3 + 2];
+            linePositions[lineIndex * 6 + 4] =
+              pointPositions[bottomIndex * 3 + 1];
+            linePositions[lineIndex * 6 + 5] =
+              pointPositions[bottomIndex * 3 + 2];
 
             lineIndex++;
           }
@@ -294,10 +321,29 @@ function FuturisticScene() {
     <>
       {/* Lighting - Green theme */}
       <ambientLight intensity={0.3} color="#001100" />
-      <directionalLight position={[10, 20, 10]} intensity={0.5} color="#00ff44" />
-      <pointLight position={[-50, 30, -50]} color="#00ff88" intensity={2} distance={100} />
-      <pointLight position={[50, 30, 50]} color="#44ff00" intensity={2} distance={100} />
-      <pointLight position={[0, 50, 0]} color="#88ff44" intensity={0.5} distance={120} />
+      <directionalLight
+        position={[10, 20, 10]}
+        intensity={0.5}
+        color="#00ff44"
+      />
+      <pointLight
+        position={[-50, 30, -50]}
+        color="#00ff88"
+        intensity={2}
+        distance={100}
+      />
+      <pointLight
+        position={[50, 30, 50]}
+        color="#44ff00"
+        intensity={2}
+        distance={100}
+      />
+      <pointLight
+        position={[0, 50, 0]}
+        color="#88ff44"
+        intensity={0.5}
+        distance={120}
+      />
 
       {/* Particle Grid Wave */}
       <ParticleGridWave />
@@ -312,6 +358,8 @@ function FuturisticScene() {
 }
 
 export default function ForestComponent() {
+  const { t } = useTranslation();
+  
   return (
     <div className="relative h-screen overflow-hidden bg-gradient-to-b from-slate-900 via-green-900 to-black">
       {/* 3D Canvas Background */}
@@ -324,9 +372,6 @@ export default function ForestComponent() {
           gl={{
             alpha: true, antialias: true, powerPreference: "high-performance"
           }}
-          style={{
-            position: "absolute", top: 0, left: 0
-          }}
         >
           <FuturisticScene />
         </Canvas>
@@ -336,20 +381,19 @@ export default function ForestComponent() {
       <div
         className="relative container mx-auto px-4 py-16 lg:px-8 lg:py-32 xl:max-w-6xl text-white"
         style={{
-          zIndex: 10, position: "relative", pointerEvents: "none"
+          zIndex: 5, position: "relative", pointerEvents: "none"
         }}
       >
         <div className="relative text-center">
           <h1 className="mb-4 text-4xl font-black text-white lg:text-6xl drop-shadow-lg">
-            I'm{" "}
+            {t('hero.greeting')}{" "}
             <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
               Demid Krom
             </span>{" "}
-            Eager to learn, motivated and ready to take on real-world challenges
+            {t('hero.title')}
           </h1>
           <p className="mx-auto text-lg/relaxed font-medium text-slate-200 lg:w-2/3 lg:text-xl/relaxed drop-shadow-md">
-            I develop full stack applications using Java and modern web technologies. Always eager to learn, improve and
-            contribute to real projects.
+            {t('hero.description')}
           </p>
 
           {/* Buttons */}
@@ -358,46 +402,43 @@ export default function ForestComponent() {
             style={{ pointerEvents: "auto" }}
           >
             <a
-              href="#"
+              href="#contact"
               className="group inline-flex items-center justify-center gap-2 rounded-lg border border-green-400 bg-green-400/20 backdrop-blur-sm px-5 py-2.5 text-sm leading-6 font-semibold text-green-300 hover:border-green-300 hover:bg-green-400/30 focus:ring-3 focus:ring-green-400/50 transition-all duration-300"
             >
-              <span>Get Started</span>
+              <span>{t('hero.cta')}</span>
             </a>
             <a
-              href="#"
+              href="#tech"
               className="inline-flex items-center justify-center gap-2 rounded-lg border border-transparent bg-white/10 backdrop-blur-sm px-5 py-2.5 text-sm leading-6 font-semibold text-white hover:text-cyan-300 hover:bg-white/20 hover:shadow-lg transition-all duration-300"
             >
-              <span>Learn more</span>
+              <span>{t('hero.ctaSecondary')}</span>
             </a>
           </div>
 
-          {/* Cards with enhanced glass effect */}
+          {/* Cards */}
           <div
             className="group relative flex items-center justify-center gap-2 sm:gap-10"
             style={{ zIndex: 15, pointerEvents: "auto" }}
           >
-            <div
-              className="w-full max-w-80 rotate-12 rounded-2xl bg-green-400/10 backdrop-blur-md border border-green-400/20 p-2.5 shadow-2xl hover:bg-green-400/20 transition-all duration-500 hover:scale-105">
+            <div className="w-full max-w-80 rotate-12 rounded-2xl bg-green-400/10 backdrop-blur-md border border-green-400/20 p-2.5 shadow-2xl hover:bg-green-400/20 transition-all duration-500 hover:scale-105">
               <img
                 src="/ide_dude.png?height=400&width=300"
                 className="aspect-3/4 w-full rounded-xl object-cover"
-                alt="IDE Development"
+                alt={t('hero.cards.ide')}
               />
             </div>
-            <div
-              className="mt-5 w-full max-w-80 rounded-2xl bg-emerald-400/10 backdrop-blur-md border border-emerald-400/20 p-2.5 shadow-2xl hover:bg-emerald-400/20 transition-all duration-500 hover:scale-105">
+            <div className="mt-5 w-full max-w-80 rounded-2xl bg-emerald-400/10 backdrop-blur-md border border-emerald-400/20 p-2.5 shadow-2xl hover:bg-emerald-400/20 transition-all duration-500 hover:scale-105">
               <img
                 src="/hand_with_iphone.jpg?height=400&width=300"
                 className="aspect-3/4 w-full rounded-xl object-cover"
-                alt="Mobile Development"
+                alt={t('hero.cards.mobile')}
               />
             </div>
-            <div
-              className="w-full max-w-80 -rotate-12 rounded-2xl bg-lime-400/10 backdrop-blur-md border border-lime-400/20 p-2.5 shadow-2xl hover:bg-lime-400/20 transition-all duration-500 hover:scale-105">
+            <div className="w-full max-w-80 -rotate-12 rounded-2xl bg-lime-400/10 backdrop-blur-md border border-lime-400/20 p-2.5 shadow-2xl hover:bg-lime-400/20 transition-all duration-500 hover:scale-105">
               <img
                 src="/vr_headset.jpg?height=400&width=300"
                 className="aspect-3/4 w-full rounded-xl object-cover"
-                alt="VR Development"
+                alt={t('hero.cards.vr')}
               />
             </div>
           </div>
