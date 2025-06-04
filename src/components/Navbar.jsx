@@ -98,8 +98,8 @@ export default function MainHeadersSimple() {
 
             {/* Right Section */}
             <div className="flex items-center gap-3">
-              {/* Language Switcher - HÖCHSTER Z-INDEX */}
-              <div className="relative z-[9999]">
+              {/* Language Switcher */}
+              <div className="animate-language-dropdown">
                 <LanguageSwitcher className="hidden lg:block" />
               </div>
 

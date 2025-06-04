@@ -1,5 +1,7 @@
+"use client";
+
 import { LanguageProvider } from "./i18n/index.jsx";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -8,13 +10,43 @@ import ProfileCard from "./components/ProfileCard";
 import Tech from "./components/Tech";
 import Contact from "./components/Contact";
 import Testimonials from "./components/Testimonials";
-import Hero from "./components/Hero.jsx"
+import Hero from "./components/Hero.jsx";
+import Blog from "./components/Blog/Blog.jsx";
+import BlogPostPage from "./pages/BlogPostPage.jsx";
+
+function HomePage() {
+  return (
+    <>
+      <section id="hero">
+        <Hero />
+      </section>
+      <section id="timeline">
+        <Timeline />
+      </section>
+      <section id="tech">
+        <Tech />
+      </section>
+      <section id="about">
+        <ProfileCard />
+      </section>
+      <section id="testimonials">
+        <Testimonials />
+      </section>
+      <section id="blog">
+        <Blog />
+      </section>
+      <section id="contact">
+        <Contact />
+      </section>
+    </>
+  );
+}
 
 function App() {
   const [shouldResetNavbar, setShouldResetNavbar] = useState(false);
 
   const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
     setShouldResetNavbar(true);
   };
 
@@ -39,25 +71,10 @@ function App() {
           {/* Main content */}
           <div className="relative z-0">
             <main>
-              {/* Home section ist bereits in Navbar/MainHeader enthalten */}
-              <section id="Hero">
-                <Hero />
-              </section>
-              <section id="timeline">
-                <Timeline />
-              </section>
-              <section id="tech">
-                <Tech />
-              </section>
-              <section id="about">
-                <ProfileCard />
-              </section>
-              <section id="testimonials">
-                <Testimonials />
-              </section>
-              <section id="contact">
-                <Contact />
-              </section>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/blog/:slug" element={<BlogPostPage />} />
+              </Routes>
             </main>
             <Footer onScrollToTop={handleScrollToTop} />
           </div>

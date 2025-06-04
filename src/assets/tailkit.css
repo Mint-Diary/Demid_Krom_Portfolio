@@ -53,8 +53,18 @@
     clip-path: inset(100% 0 0 0);
   }
 
+  .animate-build-menu-4 {
+    animation: buildElement 0.6s ease-out 3.4s forwards;
+    clip-path: inset(100% 0 0 0);
+  }
+
+  .animate-build-menu-5 {
+    animation: buildElement 0.6s ease-out 3.8s forwards;
+    clip-path: inset(100% 0 0 0);
+  }
+
   .animate-build-mobile-button {
-    animation: buildElement 0.4s ease-out 3.4s forwards;
+    animation: buildElement 0.4s ease-out 4.2s forwards;
     clip-path: inset(100% 0 0 0);
   }
 
@@ -84,12 +94,33 @@
   }
 
   .animate-build-border-bottom {
-    animation: buildBorderBottom 1s ease-out 3.8s forwards;
+    animation: buildBorderBottom 1s ease-out 4.5s forwards;
     clip-path: inset(0 100% 0 0);
   }
 
   .completion-flash {
     animation: completionFlash 0.3s ease-out;
+  }
+
+  /* Language dropdown animations */
+  .animate-language-dropdown {
+    animation: languageDropdownFadeIn 0.4s ease-out 2.0s forwards;
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  .animate-language-option {
+    animation: languageOptionFadeIn 0.3s ease-out forwards;
+  }
+
+  /* Dropdown animations */
+  .animate-dropdown {
+    animation: dropdownFadeIn 0.3s ease-out forwards;
+  }
+
+  .animate-contact {
+    animation: contactPulse 0.5s ease-out 4.0s forwards;
+    opacity: 0;
   }
 }
 
@@ -174,5 +205,55 @@
 @keyframes spin-slow {
   100% {
     transform: rotate(-360deg);
+  }
+}
+
+/* Language dropdown animations */
+@keyframes languageDropdownFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes languageOptionFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Dropdown animations */
+@keyframes dropdownFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes contactPulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
