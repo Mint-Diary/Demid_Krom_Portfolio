@@ -95,7 +95,7 @@ export default {
     passion: "Passionné par le code propre et l'expérience utilisateur",
     name: "Demid Krom",
     email: "contact@demidkrom.dev",
-    bio: "Développeur Full Stack passionné par les solutions innovantes"
+    biop: "Développeur Full Stack passionné par les solutions innovantes"
   },
 
   // Testimonials

@@ -1,7 +1,5 @@
 import { useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import * as THREE from "three";
-import { useTranslation } from "../i18n/index.jsx";
 
 // Floating Neon Particles (extracted from hero section)
 function NeonParticles() {
@@ -100,59 +98,19 @@ function ParticleScene() {
 }
 
 export default function TimelineCenteredwithExtraInfo() {
-  const { t } = useTranslation();
-  
-  const timelineEvents = [
-    {
-      date: "2023 - Present",
-      title: t('timeline.events.current.title'),
-      company: t('timeline.events.current.company'),
-      description: t('timeline.events.current.description'),
-      tags: [
-        t('timeline.tags.fullstack'),
-        t('timeline.tags.react'),
-        t('timeline.tags.spring'),
-        t('timeline.tags.java')
-      ]
-    },
-    {
-      date: "2020 - 2023",
-      title: t('timeline.events.previous.title'),
-      company: t('timeline.events.previous.company'),
-      description: t('timeline.events.previous.description'),
-      tags: [
-        t('timeline.tags.backend'),
-        t('timeline.tags.java'),
-        t('timeline.tags.spring'),
-        t('timeline.tags.sql')
-      ]
-    },
-    {
-      date: "2018 - 2020",
-      title: t('timeline.events.education.title'),
-      company: t('timeline.events.education.company'),
-      description: t('timeline.events.education.description'),
-      tags: [
-        t('timeline.tags.computerScience'),
-        t('timeline.tags.algorithms'),
-        t('timeline.tags.databases')
-      ]
-    }
-  ];
-
   return (
     <>
       {/* Background wrapper that fills full width with particles */}
-      <div id="timeline" className="relative w-full bg-slate-100 py-10 dark:bg-slate-900 overflow-hidden">
+      <div className="relative w-full bg-slate-100 py-10 dark:bg-slate-900 overflow-hidden">
         {/* 3D Canvas Background - Particles Only */}
         <div className="absolute inset-0" style={{ zIndex: 1 }}>
           <Canvas
             className="w-full h-full"
             camera={{
-              position: [0, 0, 80],
-              fov: 75,
+              position: [0, 0, 80], // Centered camera position
+              fov: 75, // Wider field of view to see more particles
               near: 0.1,
-              far: 1500
+              far: 1500 // Extended far clipping for larger area
             }}
             gl={{
               alpha: true,
@@ -169,16 +127,6 @@ export default function TimelineCenteredwithExtraInfo() {
           </Canvas>
         </div>
 
-        {/* Titel-Bereich */}
-        <div className="relative z-10 mx-auto max-w-xl text-center mb-12">
-          <h2 className="mb-4 text-3xl font-black text-gray-900 dark:text-white">
-            {t('timeline.title')}
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400">
-            {t('timeline.subtitle')}
-          </p>
-        </div>
-
         {/* Centered content with fixed width */}
         <div className="relative mx-auto w-[60%] py-5 dark:text-slate-100" style={{ zIndex: 10 }}>
           {/* Vertical Guide */}
@@ -190,45 +138,76 @@ export default function TimelineCenteredwithExtraInfo() {
             <div className="mx-auto w-1 grow bg-teal-100 dark:bg-teal-900" />
             <div className="mx-auto h-2.5 w-1 grow-0 rounded-b bg-linear-to-t from-transparent to-teal-100 dark:to-teal-900" />
           </div>
+          {/* END Vertical Guide */}
 
-          {/* Timeline Events */}
+          {/* Timeline */}
           <ul className="relative space-y-4 pl-10 md:pl-12 lg:pl-0">
-            {timelineEvents.map((event, index) => (
-              <li key={index} className="relative lg:mr-auto lg:w-1/2 lg:pr-6">
-                <div className="absolute top-0 bottom-0 left-0 mt-5 flex w-10 -translate-x-full justify-center md:w-12 lg:right-0 lg:left-auto lg:translate-x-6">
-                  <div className="size-3 rounded-full bg-teal-500 ring-3 ring-teal-100 ring-offset-2 dark:bg-teal-300 dark:ring-teal-900 dark:ring-offset-slate-900" />
-                </div>
-                <div className="rounded-xl bg-slate-100/80 backdrop-blur-sm p-4 hover:ring-3 hover:ring-slate-100 hover:ring-offset-2 dark:bg-slate-800/80 dark:ring-offset-slate-900 dark:hover:ring-slate-700 border border-slate-200/50 dark:border-slate-700/50">
-                  <div className="flex items-center justify-between space-x-2">
-                    <h3 className="font-bold text-slate-900 dark:text-slate-100">
-                      {event.title}
-                    </h3>
-                    <time className="font-bold text-teal-600 shrink-0 dark:text-teal-400">
-                      {event.date}
-                    </time>
-                  </div>
-                  <div className="mt-1">
-                    <div className="text-sm font-semibold text-teal-600 dark:text-teal-400">
-                      {event.company}
-                    </div>
-                    <p className="text-sm text-slate-600 dark:text-slate-400">
-                      {event.description}
-                    </p>
-                  </div>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {event.tags.map((tag, tagIndex) => (
-                      <span
-                        key={tagIndex}
-                        className="inline-flex items-center rounded-md bg-teal-100 px-2 py-1 text-xs font-medium text-teal-700 dark:bg-teal-900/30 dark:text-teal-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </li>
-            ))}
+            {/* Event */}
+            <li className="relative lg:mr-auto lg:w-1/2 lg:pr-6">
+              <div className="absolute top-0 bottom-0 left-0 mt-5 flex w-10 -translate-x-full justify-center md:w-12 lg:right-0 lg:left-auto lg:translate-x-6">
+                <div className="size-3 rounded-full bg-teal-500 ring-3 ring-teal-100 ring-offset-2 dark:bg-teal-300 dark:ring-teal-900 dark:ring-offset-slate-900" />
+              </div>
+              <div className="rounded-xl bg-slate-100/80 backdrop-blur-sm p-4 hover:ring-3 hover:ring-slate-100 hover:ring-offset-2 dark:bg-slate-800/80 dark:ring-offset-slate-900 dark:hover:ring-slate-700 border border-slate-200/50 dark:border-slate-700/50">
+                <h4 className="mb-2 font-semibold">ODAV AG</h4>
+                <p className="text-sm leading-relaxed">
+                  Apprenticeship as an IT Specialist in Full Stack Application
+                  Development
+                </p>
+              </div>
+              <div className="px-4 py-2 lg:absolute lg:top-0 lg:right-0 lg:bottom-0 lg:mt-4 lg:flex lg:w-40 lg:translate-x-full lg:flex-col lg:py-0 lg:pr-0 lg:pl-6">
+                <p className="text-sm font-medium text-slate-500">
+                  September 2022 - Present
+                </p>
+              </div>
+            </li>
+            {/* END Event */}
+
+            {/* Event */}
+            <li className="relative lg:ml-auto lg:w-1/2 lg:pl-6">
+              <div className="absolute top-0 bottom-0 left-0 mt-5 flex w-10 -translate-x-full justify-center md:w-12 lg:-translate-x-6">
+                <div className="size-3 rounded-full bg-teal-500 ring-3 ring-teal-100 ring-offset-2 dark:bg-teal-300 dark:ring-teal-900 dark:ring-offset-slate-900" />
+              </div>
+              <div className="rounded-xl bg-slate-100/80 backdrop-blur-sm p-4 hover:ring-3 hover:ring-slate-100 hover:ring-offset-2 dark:bg-slate-800/80 dark:ring-offset-slate-900 dark:hover:ring-slate-700 border border-slate-200/50 dark:border-slate-700/50">
+                <h4 className="mb-2 font-semibold">Middle School</h4>
+                <p className="text-sm leading-relaxed">
+                  Graduated from Herzog-Ludwig Middle School in Bogen with a
+                  Mittlerer Bildungsabschluss (equivalent to GCSEs or
+                  intermediate secondary school diploma).
+                </p>
+              </div>
+              <div className="px-4 py-2 lg:absolute lg:top-0 lg:bottom-0 lg:left-0 lg:mt-4 lg:flex lg:w-40 lg:-translate-x-full lg:flex-col lg:py-0 lg:pr-6 lg:pl-0 lg:text-right">
+                <p className="text-sm font-medium text-slate-500">
+                  Dezember 2017 - September 2022
+                </p>
+              </div>
+            </li>
+            {/* END Event */}
+
+            {/* Event */}
+            <li className="relative lg:mr-auto lg:w-1/2 lg:pr-6">
+              <div className="absolute top-0 bottom-0 left-0 mt-5 flex w-10 -translate-x-full justify-center md:w-12 lg:right-0 lg:left-auto lg:translate-x-6">
+                <div className="size-3 rounded-full bg-teal-500 ring-3 ring-teal-100 ring-offset-2 dark:bg-teal-300 dark:ring-teal-900 dark:ring-offset-slate-900" />
+              </div>
+              <div className="rounded-xl bg-slate-100/80 backdrop-blur-sm p-4 hover:ring-3 hover:ring-slate-100 hover:ring-offset-2 dark:bg-slate-800/80 dark:ring-offset-slate-900 dark:hover:ring-slate-700 border border-slate-200/50 dark:border-slate-700/50">
+                <h4 className="mb-2 font-semibold">
+                  Middle School in Regensburg
+                </h4>
+                <p className="text-sm leading-relaxed">
+                  Initially attended St.-Wolfgang-Mittelschule in Regensburg
+                  before relocating to Bogen, where I completed my secondary
+                  education at Herzog-Ludwig-Mittelschule and earned the
+                  Mittlerer Bildungsabschluss
+                </p>
+              </div>
+              <div className="px-4 py-2 lg:absolute lg:top-0 lg:right-0 lg:bottom-0 lg:mt-4 lg:flex lg:w-40 lg:translate-x-full lg:flex-col lg:py-0 lg:pr-0 lg:pl-6">
+                <p className="text-sm font-medium text-slate-500">
+                  August 2016 - December 2017
+                </p>
+              </div>
+            </li>
+            {/* END Event */}
           </ul>
+          {/* END Timeline */}
         </div>
       </div>
     </>

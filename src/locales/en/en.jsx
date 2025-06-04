@@ -95,7 +95,7 @@ export default {
     passion: "Passionate about clean code and user experience",
     name: "Demid Krom",
     email: "contact@demidkrom.dev",
-    bio: "Full Stack Developer passionate about innovative solutions"
+    biop: "Full Stack Developer passionate about innovative solutions"
   },
 
   // Testimonials
@@ -161,9 +161,9 @@ export default {
       twitter: "Twitter",
       instagram: "Instagram"
     },
-    subtitle: "Response within 24 hours",
-    title: "Get in touch",
-    description: "Have questions? Feel free to contact me and I'll get back to you as soon as possible."
+    subtitles: "Response within 24 hours",
+    titlet: "Get in touch",
+    descriptiond: "Have questions? Feel free to contact me and I'll get back to you as soon as possible."
   },
 
   // Footer
