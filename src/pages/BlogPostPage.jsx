@@ -2,9 +2,9 @@
 
 import { useParams, Link } from "react-router-dom"
 import { blogPosts } from "../components/Blog/blog-data.js"
-import BlogPost1 from "../components/blog/posts/BlogPost1.jsx"
-import BlogPost2 from "../components/blog/posts/BlogPost2.jsx"
-import BlogPost3 from "../components/blog/posts/BlogPost3.jsx"
+import BlogPost1 from "../components/Blog/Posts/BlogPost1.jsx"
+import BlogPost2 from "../components/Blog/Posts/BlogPost2.jsx"
+import BlogPost3 from "../components/Blog/Posts/BlogPost3.jsx"
 import { ArrowLeft } from "lucide-react"
 
 const blogComponents = {
