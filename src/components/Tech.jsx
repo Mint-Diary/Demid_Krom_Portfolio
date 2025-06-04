@@ -116,68 +116,36 @@ export default function LogosBoxedwithHeading() {
     },
   ];
 
-  const categories = [
-    {
-      name: t('tech.frontend'),
-      description: t('tech.frontendDesc'),
-      icon: <FaCode className="h-6 w-6 text-blue-500" />
-    },
-    {
-      name: t('tech.backend'),
-      description: t('tech.backendDesc'),
-      icon: <FaDatabase className="h-6 w-6 text-green-500" />
-    },
-    {
-      name: t('tech.devops'),
-      description: t('tech.devopsDesc'),
-      icon: <FaRocket className="h-6 w-6 text-purple-500" />
-    }
-  ];
-
   return (
-    <div className="bg-[#101828] px-4 py-16 lg:px-8 lg:py-20">
+    <div className="bg-slate-100 dark:bg-slate-900 dark:text-slate-100 px-4 py-16 lg:px-8 lg:py-20">
       <div className="mx-auto max-w-xl text-center">
-        <h2 className="mb-4 text-3xl font-black text-white">
+        <h2 className="mb-4 text-3xl font-black text-slate-900 dark:text-white">
           {t('tech.title')}
         </h2>
-        <p className="mx-auto mb-8 max-w-md text-lg text-gray-400">
+        <p className="mx-auto mb-8 max-w-md text-lg text-slate-600 dark:text-gray-400">
           {t('tech.subtitle')}
         </p>
-      </div>
-
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 md:grid-cols-2 lg:grid-cols-3">
-        {categories.map((category) => (
-          <div key={category.name} className="relative overflow-hidden rounded-2xl border-2 border-gray-800 bg-gray-900/50 p-8">
-            <div className="relative z-10">
-              {category.icon}
-              <h3 className="mt-6 mb-2 text-xl font-bold text-white">
-                {category.name}
-              </h3>
-              <p className="text-gray-400">
-                {category.description}
-              </p>
-            </div>
-          </div>
-        ))}
       </div>
 
       <div className="mx-auto mt-12 grid max-w-6xl grid-cols-2 gap-4 px-4 sm:grid-cols-3 md:grid-cols-4">
         {technologies.map((tech) => (
           <div
             key={tech.name}
-            className={`group relative overflow-hidden rounded-xl border border-gray-800 bg-gray-900/50 p-4 ${tech.shadow} hover:border-gray-700`}
+            className={`group relative overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/50 p-4 ${tech.shadow} hover:border-slate-300 dark:hover:border-slate-700`}
           >
             <div className="flex items-center">
               <div className={`mr-3 text-2xl ${tech.icon_color}`}>
                 {tech.icon}
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-white">
+                <h4 className="text-sm font-semibold text-slate-900 dark:text-white">
                   {tech.name}
                 </h4>
-                <p className="text-xs text-gray-400">
-                  {tech.proficiency}
-                </p>
+                {tech.proficiency && (
+                  <p className="text-xs text-slate-500 dark:text-gray-400">
+                    {tech.proficiency}
+                  </p>
+                )}
               </div>
             </div>
           </div>
